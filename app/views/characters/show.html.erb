@@ -1,0 +1,8 @@
+<h1>Character Info</h1>
+
+<h3><%= @character.name %></h3>
+
+<h4><%= @character.actor %></h4>
+<cite><%= @character.description %></cite>
+
+<%= button_to "Delete", @character, method: :delete %>

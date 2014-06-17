@@ -1,0 +1,45 @@
+<h3><%= @television_show.title %></h3>
+
+<ul>
+  <li>Network: <%= @television_show.network %></li>
+  <li>Years: <%= @television_show.years %></li>
+</ul>
+
+<div>
+  <%= @television_show.synopsis %>
+</div>
+
+<div>
+<h1>Characters:</h1>
+<ul>
+  <% @television_show.characters.each do |c| %>
+    <li><%= link_to("#{c.name} - #{c.actor}", character_path(c)) %></li>
+  <% end %>
+</ul>
+</div>
+
+<% if @character.errors.any? %>
+  <p> There were errors in your submission </p>
+  <ul>
+    <% @character.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div>
+  <%= form_for [@television_show, @character] do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :actor %>
+      <%= f.text_field :actor %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>

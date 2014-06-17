@@ -1,0 +1,7 @@
+<h1>Characters</h1>
+
+<ul>
+  <% @characters.each do |c| %>
+    <li><%= link_to(c.name, character_path(c)) %> - <%= c.television_show.title %></li>
+  <% end %>
+</ul>
